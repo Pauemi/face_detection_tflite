@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import 'homepage.dart';
+import 'homepage.dart'; // Contiene el código de detección facial
 import 'utils/global_key.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class FaceDetectionML extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
-      title: 'Prototipo Detección facial',
+      title: 'Prototipo Detección Facial',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -33,22 +33,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  
   final List<Map<String, String>> slides = const [
     {
-      'image': 'images/facial_detection_image.webp',
+      'image': 'assets/images/facial_detection_image.webp',
       'title': 'Reconocimiento Facial',
-      'text': 'Implementación de la solucion de deteccion facial',
+      'text': 'Implementación de la solución de detección facial',
     },
     {
-      'image': 'images/machinelearning.webp',
-      'title': 'Aprendizaje automático para aplicaciones multiplataforma',
-      'text': 'Prototipo de implementación de ML (machine learning) en dispositivos móviles',
+      'image': 'assets/images/machinelearning.webp',
+      'title': 'Aprendizaje Automático',
+      'text': 'Prototipo de implementación de ML en dispositivos móviles',
     },
     {
-      'image': 'images/mlkit.jpg',
-      'title': 'Google ML Kit ',
-      'text': 'Implementación del kit de aprendizaje automático ofrecido por Google para dispositivos móviles',
+      'image': 'assets/images/mlkit.jpg',
+      'title': 'Google ML Kit',
+      'text': 'Implementación del kit de aprendizaje automático de Google',
     },
   ];
 
@@ -75,7 +74,6 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CarouselSlider(
-              
               options: CarouselOptions(
                 height: 400.0,
                 autoPlay: false,
@@ -95,7 +93,6 @@ class _MainScreenState extends State<MainScreen> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          
                           child: Image.asset(
                             slide['image']!,
                             fit: BoxFit.contain,
@@ -135,11 +132,10 @@ class _MainScreenState extends State<MainScreen> {
                       entry.key,
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
-                      );
+                    );
                     setState(() {
                       _currentIndex = entry.key;
                     });
-                    
                   },
                   child: Container(
                     width: 12.0,
@@ -156,27 +152,27 @@ class _MainScreenState extends State<MainScreen> {
                 );
               }).toList(),
             ),
-            const SizedBox(height: 24), // Espacio entre el slider y el contenido siguiente
+            const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()), // Redirige a la detección facial
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen, // Fondo verde claro
-                foregroundColor: Colors.white, // Color del texto
+                backgroundColor: Colors.lightGreen,
+                foregroundColor: Colors.white,
                 textStyle: const TextStyle(
-                  fontWeight: FontWeight.w600, // Peso de la fuente
+                  fontWeight: FontWeight.w600,
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8), // Borde redondeado
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                shadowColor: Colors.black.withOpacity(0.5), // Color de sombra
-                elevation: 5, // Elevación de la sombra
+                shadowColor: Colors.black.withOpacity(0.5),
+                elevation: 5,
               ),
-              child: const Text( // Este es el child necesario para ElevatedButton
+              child: const Text(
                 'Ingresar',
                 style: TextStyle(
                   fontSize: 18,
